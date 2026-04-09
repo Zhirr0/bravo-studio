@@ -31,6 +31,7 @@ export default function OurVoice() {
           src={"/images/our-voice.webp"}
           alt="our voice hola image"
           width={723}
+          loading="eager"
           height={800}
         />
       </div>

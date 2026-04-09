@@ -32,6 +32,7 @@ export default function SharedShader() {
             alt="shared shader image"
             width={889}
             height={566}
+            loading="eager"
           />
         </div>
         <div className="sh-right-content">

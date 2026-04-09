@@ -18,6 +18,7 @@ export default function OliviaSection() {
               alt="olivia dine and wine"
               width={704}
               height={469}
+              loading="eager"
             />
           </div>
         </div>
@@ -39,6 +40,7 @@ export default function OliviaSection() {
               alt="olivia dine and wine"
               width={721}
               height={645}
+              loading="eager"
             />
           </div>
         </div>

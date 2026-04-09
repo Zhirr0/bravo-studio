@@ -16,6 +16,7 @@ export default function FolioSection() {
             alt="folio on mobile"
             width={494}
             height={511}
+            loading="eager"
           />
         </div>
         <div className="folio-left-content">
@@ -43,6 +44,7 @@ export default function FolioSection() {
               alt="folio text on iphone"
               width={840}
               height={451}
+              loading="eager"
             />
           </div>
         </div>
