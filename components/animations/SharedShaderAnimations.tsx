@@ -52,6 +52,7 @@ export default function SharedShaderAnimations() {
   useVerticalLineReveal({
     selector: ".shared-shader .sh-middle .vertical",
     trigger: ".shared-shader",
+    delayAmount: "-=300px",
   });
 
   return null;
