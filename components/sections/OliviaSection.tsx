@@ -14,7 +14,7 @@ export default function OliviaSection() {
         <div className="olivia-left-image-container overflow-hidden">
           <div className="olivia-left-image">
             <Image
-              src={"/images/olivia-left.png"}
+              src={"/images/olivia-left.webp"}
               alt="olivia dine and wine"
               width={704}
               height={469}
@@ -35,7 +35,7 @@ export default function OliviaSection() {
         <div className="olivia-right-image-container overflow-hidden">
           <div className="olivia-right-image">
             <Image
-              src={"/images/olivia-right.png"}
+              src={"/images/olivia-right.webp"}
               alt="olivia dine and wine"
               width={721}
               height={645}

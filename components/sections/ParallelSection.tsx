@@ -8,7 +8,7 @@ export default function ParallelSection() {
       <div className="p-left flex flex-col items-center h-svh gap-4">
         <div className="p-left-image">
           <Image
-            src={"/images/parallel-left.png"}
+            src={"/images/parallel-left.webp"}
             alt="parallel-left"
             className="w-[476px] h-full -translate-y-1"
             width={476}
@@ -23,7 +23,7 @@ export default function ParallelSection() {
       </div>
       <div className="p-middle">
         <Image
-          src={"/images/parallel-middle.png"}
+          src={"/images/parallel-middle.webp"}
           alt="parallel middle image"
           width={782}
           height={746}
@@ -42,14 +42,13 @@ export default function ParallelSection() {
           </p>
         </div>
         <div className="p-right-image">
-          
-        <Image
-          src={"/images/parallel-right.png"}
-          alt="parallel left image"
-          width={443}
-          height={434}
-          loading="eager"
-        />
+          <Image
+            src={"/images/parallel-right.webp"}
+            alt="parallel left image"
+            width={443}
+            height={434}
+            loading="eager"
+          />
         </div>
       </div>
     </section>

@@ -12,7 +12,7 @@ export default function FolioSection() {
       <div className="folio-left">
         <div className="img">
           <Image
-            src={"/images/folio-left-image.png"}
+            src={"/images/folio-left-image.webp"}
             alt="folio on mobile"
             width={494}
             height={511}
@@ -39,7 +39,7 @@ export default function FolioSection() {
         <div className="folio-right-bottom">
           <div className="img">
             <Image
-              src={"/images/folio-right-down-image.png"}
+              src={"/images/folio-right-down-image.webp"}
               alt="folio text on iphone"
               width={840}
               height={451}

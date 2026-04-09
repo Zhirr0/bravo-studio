@@ -15,7 +15,7 @@ export default function SharedShader() {
         </div>
         <div className="sh-left-image">
           <Image
-            src={"/images/sh-left-image.png"}
+            src={"/images/sh-left-image.webp"}
             alt="shared shader image"
             width={767}
             height={536}
@@ -28,7 +28,7 @@ export default function SharedShader() {
       <div className="sh-right">
         <div className="sh-right-image">
           <Image
-            src={"/images/sh-right-image.png"}
+            src={"/images/sh-right-image.webp"}
             alt="shared shader image"
             width={889}
             height={566}

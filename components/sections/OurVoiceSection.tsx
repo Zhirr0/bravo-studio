@@ -18,7 +18,7 @@ export default function OurVoice() {
       </div>
       <div className="our-voice-book bg-content-primary absolute bottom-0 left-0">
         <Image
-          src={"/images/our-voice-hola.png"}
+          src={"/images/our-voice-hola.webp"}
           className="w-full h-full object-cover"
           alt="our voice hola image"
           width={567}
@@ -28,7 +28,7 @@ export default function OurVoice() {
       <div className="our-voice-image h-svh w-[723px] absolute top-0 right-0">
         <Image
           className="h-full"
-          src={"/images/our-voice.png"}
+          src={"/images/our-voice.webp"}
           alt="our voice hola image"
           width={723}
           height={800}

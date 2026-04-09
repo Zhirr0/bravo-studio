@@ -25,7 +25,7 @@ export default function Catalyst() {
       </div>
       <div className="img">
         <Image
-          src={"/images/catalyst.png"}
+          src={"/images/catalyst.webp"}
           alt="catalyst image"
           width={361}
           height={527}
