@@ -1,3 +1,4 @@
+import { connection } from "next/server";
 import PageReadySignal from "@/components/PageReadySignal";
 import Catalyst from "@/components/sections/CatalystSection";
 import FolioSection from "@/components/sections/FolioSection";
@@ -8,9 +9,11 @@ import ParallelSection from "@/components/sections/ParallelSection";
 import SharedShader from "@/components/sections/SharedShaderSection";
 
 export default async function Home() {
-  await new Promise(r => setTimeout(r, 5000))
+  await connection(); // tells the website to not cache data, we are gonna keep this for now to see how long loading look like 
+  await new Promise(r => setTimeout(r, 3000));
+  
   return (
-    <div className="home page flex flex-row gap-10 ">
+    <div className="home page flex flex-row gap-10">
       <PageReadySignal />
       <HeroSection />
       <Catalyst />
