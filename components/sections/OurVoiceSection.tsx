@@ -33,6 +33,7 @@ export default function OurVoice() {
           width={723}
           loading="eager"
           height={800}
+          preload
         />
       </div>
     </section>
