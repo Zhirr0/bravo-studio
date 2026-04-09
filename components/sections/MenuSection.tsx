@@ -11,6 +11,7 @@ export default function MenuSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const splitRef = useRef<SplitText | null>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const overlineRef = useRef<HTMLSpanElement>(null);
 
   useGSAP(
     () => {
@@ -21,8 +22,9 @@ export default function MenuSection() {
         mask: "chars",
       });
 
-      gsap.set(sectionRef.current, { opacity: 0, pointerEvents: 'none' });
+      gsap.set(sectionRef.current, { opacity: 0, pointerEvents: "none" });
       gsap.set(splitRef.current.chars, { yPercent: 100 });
+      gsap.set(overlineRef.current, { scaleX: 0, transformOrigin: "left center" });
     },
     { scope: sectionRef },
   );
@@ -42,26 +44,92 @@ export default function MenuSection() {
 
       tlRef.current?.kill();
       tlRef.current = gsap.timeline({
-        onStart: () => {
-          lock();
-        },
-        onComplete: () => {
-          unlock();
-        },
+        onStart() { lock() },
+        onComplete() { unlock() }
       });
 
       if (active) {
         tlRef.current
-          .to(".nav-logo", { opacity: 0, pointerEvents: "none", duration: 0.3, ease: "power3.out" })
-          .to(".page", { opacity: 0, pointerEvents: "none", duration: 0.3, ease: "power3.out", delay: 0.2 }, "<")
-          .to(sectionRef.current, { opacity: 1, pointerEvents: "auto", duration: 0.4, ease: "power3.out" }, "<")
-          .to(splitRef.current!.chars, { yPercent: 0, duration: 2, ease: "power4.out", stagger: 0.05 }, "<");
+          .to(".nav-logo", {
+            opacity: 0,
+            pointerEvents: "none",
+            duration: 0.3,
+            ease: "power3.out",
+          })
+          .to(
+            ".page",
+            {
+              opacity: 0,
+              pointerEvents: "none",
+              duration: 0.3,
+              ease: "power3.out",
+              delay: 0.2,
+            },
+            "<",
+          )
+          .to(
+            sectionRef.current,
+            {
+              opacity: 1,
+              pointerEvents: "auto",
+              duration: 0.4,
+              ease: "power3.out",
+            },
+            "<",
+          )
+          .to(
+            splitRef.current!.chars,
+            { yPercent: 0, duration: 2, ease: "power4.out", stagger: 0.05 },
+            "<",
+          )
+          .to(
+            overlineRef.current,
+            { scaleX: 1, duration: 2, delay: .5, ease: "power4.out" },
+            "<",
+          );
       } else {
         tlRef.current
-          .to(splitRef.current!.chars, { yPercent: 100, duration: 0.6, ease: "power3.in", stagger: 0.01 })
-          .to(sectionRef.current, { opacity: 0, pointerEvents: "none", duration: 0.3, ease: "power3.in" }, "<0.2")
-          .to(".nav-logo", { opacity: 1, pointerEvents: "auto", duration: 0.3, ease: "power3.out" }, "<0.2")
-          .to(".page", { opacity: 1, pointerEvents: "auto", duration: 0.3, ease: "power3.out" }, "<");
+          .to(splitRef.current!.chars, {
+            yPercent: 100,
+            duration: 0.6,
+            ease: "power3.in",
+            stagger: 0.01,
+          })
+          .to(
+            overlineRef.current,
+            { scaleX: 0, duration: 0.4, ease: "power3.in" },
+            "<",
+          )
+          .to(
+            sectionRef.current,
+            {
+              opacity: 0,
+              pointerEvents: "none",
+              duration: 0.3,
+              ease: "power3.in",
+            },
+            "<0.2",
+          )
+          .to(
+            ".nav-logo",
+            {
+              opacity: 1,
+              pointerEvents: "auto",
+              duration: 0.3,
+              ease: "power3.out",
+            },
+            "<0.2",
+          )
+          .to(
+            ".page",
+            {
+              opacity: 1,
+              pointerEvents: "auto",
+              duration: 0.3,
+              ease: "power3.out",
+            },
+            "<",
+          );
       }
     };
 
@@ -79,10 +147,20 @@ export default function MenuSection() {
           key={item}
           className="flex w-fit items-end leading-[0.88] mb-1 cursor-pointer"
         >
-          <span className="text-[30px] font-via-libre mb-[10px] -translate-y-2 mr-3 text-content-primary">
+          <span className={`text-[30px] font-via-libre mb-[10px] -translate-y-2 mr-3 text-content-primary ${i === 0 ? "opacity-50" : ""}`}>
             0{i + 1}
           </span>
-          <span className="menu-item-text text-[170px] w-fit text-content-primary">
+          <span
+            className={`menu-item-text text-[170px] w-fit text-content-primary relative ${
+              i === 0 ? "opacity-50" : ""
+            }`}
+          >
+            {i === 0 && (
+              <span
+                ref={overlineRef}
+                className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[3px] bg-content-primary"
+              />
+            )}
             {item}
           </span>
         </div>
