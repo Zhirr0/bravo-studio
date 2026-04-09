@@ -13,6 +13,7 @@ import SmoothScroll from "@/lenis/SmoothScroll";
 import TransitionProvider from "@/components/TransitionProvider";
 import Nav from "@/components/Nav";
 import MenuSection from "@/components/sections/MenuSection";
+import { Suspense } from "react";
 
 const righteous = Righteous({
   variable: "--font-righteous",
@@ -67,9 +68,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <TransitionProvider>
-        <Nav />
-        <MenuSection />
-          <SmoothScroll>{children}</SmoothScroll>
+          <Nav />
+          <MenuSection />
+          <Suspense>
+            <SmoothScroll>{children}</SmoothScroll>
+          </Suspense>
         </TransitionProvider>
       </body>
     </html>
