@@ -8,7 +8,7 @@ import ParallelSection from "@/components/sections/ParallelSection";
 import SharedShader from "@/components/sections/SharedShaderSection";
 
 export default async function Home() {
-  await new Promise(r => setTimeout(r, 5000))
+  await new Promise(r => setTimeout(r, 3000))
   return (
     <div className="home page flex flex-row gap-10 ">
       <PageReadySignal />
