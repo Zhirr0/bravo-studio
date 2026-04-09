@@ -1,15 +1,53 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import {
+  Orelega_One,
+  Oxygen,
+  Patua_One,
+  Righteous,
+  Viaoda_Libre,
+  Ultra,
+} from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import "./globals.css";
+import SmoothScroll from "@/lenis/SmoothScroll";
+import TransitionProvider from "@/components/TransitionProvider";
+import Nav from "@/components/Nav";
+import MenuSection from "@/components/sections/MenuSection";
+
+const righteous = Righteous({
+  variable: "--font-righteous",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const viaLibre = Viaoda_Libre({
+  variable: "--font-via-libre",
   subsets: ["latin"],
+  weight: "400",
+});
+
+const ultra = Ultra({
+  variable: "--font-ultra",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const oxygen = Oxygen({
+  variable: "--font-oxygen",
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+});
+
+const patuaOne = Patua_One({
+  variable: "--font-patua-one",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const orelegaOne = Orelega_One({
+  variable: "--font-orelega-one",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -25,9 +63,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${ultra.variable} ${viaLibre.variable} ${patuaOne.variable} ${oxygen.variable} ${righteous.variable} ${orelegaOne.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <TransitionProvider>
+        <Nav />
+        <MenuSection />
+          <SmoothScroll>{children}</SmoothScroll>
+        </TransitionProvider>
+      </body>
     </html>
   );
 }

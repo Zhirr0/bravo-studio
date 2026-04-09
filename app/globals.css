@@ -1,26 +1,255 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-surface-primary: #f0efea;
+  --color-content-primary: #141414;
+
+  --font-righteous: var(--font-righteous);
+  --font-ultra: var(--font-ultra);
+  --font-oxygen: var(--font-oxygen);
+  --font-patua-one: var(--font-patua-one);
+  --font-via-libre: var(--font-via-libre);
+  --font-orelega-one: var(--font-orelega-one);
+}
+::-webkit-scrollbar {
+  @apply w-0 hidden invisible h-0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .spacer {
+    @apply w-[20svw] h-[20svh];
+  }
+
+  body {
+    @apply bg-surface-primary text-content-primary;
+  }
+
+  ::selection {
+    @apply bg-content-primary text-surface-primary;
+  }
+
+  h1 {
+    @apply font-ultra;
+  }
+  h3 {
+    @apply font-patua-one;
+  }
+  h5 {
+    @apply font-righteous;
+  }
+
+  img {
+    user-select: none;
+  }
+
+  span.special-content {
+    @apply font-orelega-one;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .home {
+    @apply flex flex-row h-svh;
+  }
+
+  .hero {
+    @apply bg-surface-primary relative  h-svh min-w-full shrink-0;
+
+    .hero-content {
+      @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-between w-[98%] items-center text-center flex-row;
+
+      .hero-featured-works {
+        @apply ml-auto flex  flex-row justify-center items-center;
+        span {
+          @apply ml-2.5;
+        }
+      }
+
+      h3:first-child {
+        @apply mr-auto;
+      }
+    }
+
+    h1 {
+      @apply absolute bottom-0 left-5 text-[170px];
+    }
+  }
+
+  .catalyst {
+    @apply bg-surface-primary relative h-svh min-w-full shrink-0 text-content-primary;
+
+    h1 {
+      @apply text-[100px] absolute bottom-0 left-3;
+    }
+
+    .catalyst-header {
+      @apply translate-x-3 flex flex-col justify-start whitespace-nowrap;
+      h3 {
+        @apply text-[70px];
+        line-height: 0.8;
+      }
+      h5 {
+        @apply text-[31px];
+      }
+    }
+
+    .catalyst-para {
+      @apply translate-x-3 w-[800px] pt-[50px];
+      p {
+        @apply font-oxygen;
+        font-size: 28px;
+        line-height: 1.4;
+        text-align: left;
+        letter-spacing: -0.1px;
+      }
+      .catalyst-first-letter {
+        @apply font-patua-one;
+        font-size: 175px;
+        font-weight: 700;
+        line-height: 0.82;
+        float: left;
+        margin-right: 0.12em;
+        margin-top: 0.06em;
+        color: #111;
+      }
+    }
+
+    .img {
+      @apply absolute top-3 right-10;
+    }
+  }
+
+  .our-voice {
+    @apply h-svh min-w-full shrink-0 relative bg-surface-primary text-content-primary overflow-hidden;
+
+    .our-voice-content {
+      @apply translate-x-3;
+      h1 {
+        @apply text-[130px];
+        line-height: 0.8;
+      }
+      h5 {
+        @apply text-[20px];
+      }
+      h3 {
+        @apply text-[30px];
+        line-height: 1.1;
+      }
+    }
+  }
+
+  .shared-shader {
+    @apply bg-surface-primary relative text-content-primary min-w-[120svw] h-svh;
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    grid-column-gap: 50px;
+    grid-row-gap: 0px;
+
+    .sh-left {
+      @apply h-svh overflow-hidden flex flex-col;
+
+      .sh-header {
+        @apply flex-shrink-0;
+        h1 {
+          @apply text-[140px];
+          line-height: 0.8;
+        }
+      }
+
+      .sh-left-image {
+        @apply flex-1 overflow-hidden min-h-0;
+        img {
+          @apply w-full h-full object-cover;
+        }
+      }
+    }
+  }
+
+  .parallel {
+    @apply relative shrink-0 overflow-hidden;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;
+
+    .p-left {
+      .p-header {
+        h1 {
+          @apply text-[80px];
+        }
+      }
+    }
+    .p-middle {
+    }
+    .p-right {
+    }
+  }
+
+  .folio {
+    @apply flex relative justify-between min-w-full overflow-visible shrink-0 gap-50;
+
+    .folio-left {
+      .folio-left-content {
+        h1 {
+          @apply text-[100px] leading-25;
+        }
+        h5 {
+          @apply text-[25px] -translate-y-3;
+        }
+      }
+    }
+
+    .folio-right {
+      @apply h-svh relative flex flex-col flex-1 overflow-hidden;
+
+      .folio-right-top {
+        @apply flex flex-row gap-2 items-center text-left flex-[0_0_40%] overflow-hidden;
+
+        .folio-right-content {
+          @apply shrink-0 text-[25px];
+        }
+      }
+
+      .folio-right-bottom {
+        @apply flex-1 overflow-hidden;
+
+        .img {
+          @apply h-full;
+          img {
+            @apply h-full w-auto object-contain;
+          }
+        }
+      }
+    }
+  }
+
+  .olivia {
+    @apply relative min-w-full shrink-0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 20px;
+
+    .olivia-left {
+      .olivia-left-header {
+        @apply flex justify-items-center items-end;
+        h1 {
+          @apply text-[130px] leading-27;
+        }
+        h5 {
+          @apply text-[31px] translate-y-[6px];
+        }
+      }
+      .olivia-left-content {
+        p {
+          @apply text-[25px] leading-6 w-[700px];
+        }
+      }
+    }
+  }
 }
